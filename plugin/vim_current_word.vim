@@ -1,6 +1,6 @@
-let s:word_characters = '[A-Za-z0-9_]'
+" TODO: disable in certain buffers (help, nerdtree?, quickfix ...)
 
-" Checks if passed highlight exists
+" Check if gihglight group exists
 func HlExists(hl)
   if !hlexists(a:hl)
     return 0
@@ -22,14 +22,22 @@ if !HlExists('CurrentWord')
 end
 
 function s:highlight_word_under_cursor()
+  " if !exists('b:word_characters')
+  "   let b:word_characters = s:word_characters_regex()
+  " endif
   let character_under_cursor = matchstr(getline('.'), '\%' . col('.') . 'c.')
-  if character_under_cursor=~#s:word_characters
-    exe printf('match CurrentWordTwins /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-    exe '2match CurrentWord /\%['.s:word_characters.']\+\%#'.s:word_characters.'\+/'
+  " if character_under_cursor=~#b:word_characters
+  if character_under_cursor=~#'\k'
+    let current_word =expand('<cword>')
+    " exe '2match CurrentWordTwins /\V\<'.current_word.'\>/'
+    exe '2match CurrentWordTwins /\k*\<\V'.current_word.'\m\>\k*/'
+" /\k*\%#\k*
+    exe '3match CurrentWord /\k*\%#\k*/'
+    " exe '3match CurrentWord /\%[['.current_word.']]\+\%#\%[['.current_word.']]\+/'
   else
-    match CurrentWordTwins ''
-    match CurrentWord ''
+    2match none
+    3match none
   endif
 endfunction
 
-autocmd CursorMoved * call s:highlight_word_under_cursor()
+autocmd! CursorMoved * call s:highlight_word_under_cursor()
