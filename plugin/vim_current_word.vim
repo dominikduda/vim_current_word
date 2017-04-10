@@ -30,13 +30,13 @@ function s:highlight_word_under_cursor()
   if character_under_cursor=~#'\k'
     let current_word =expand('<cword>')
     " exe '2match CurrentWordTwins /\V\<'.current_word.'\>/'
-    exe '2match CurrentWordTwins /\k*\<\V'.current_word.'\m\>\k*/'
+    exe 'match CurrentWordTwins /\k*\<\V'.current_word.'\m\>\k*/'
 " /\k*\%#\k*
-    exe '3match CurrentWord /\k*\%#\k*/'
+    exe '2match CurrentWord /\k*\%#\k*/'
     " exe '3match CurrentWord /\%[['.current_word.']]\+\%#\%[['.current_word.']]\+/'
   else
+    match none
     2match none
-    3match none
   endif
 endfunction
 
