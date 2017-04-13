@@ -21,7 +21,7 @@ if !HlExists('CurrentWord')
   hi CurrentWord ctermbg=52
 end
 
-function s:highlight_word_under_cursor()
+function! s:highlight_word_under_cursor()
   " if !exists('b:word_characters')
   "   let b:word_characters = s:word_characters_regex()
   " endif
