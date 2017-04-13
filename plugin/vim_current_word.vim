@@ -1,7 +1,7 @@
 " TODO: disable in certain buffers (help, nerdtree?, quickfix ...)
 
 " Check if gihglight group exists
-func HlExists(hl)
+func! HlExists(hl)
   if !hlexists(a:hl)
     return 0
   endif
