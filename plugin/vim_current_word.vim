@@ -1,7 +1,29 @@
-" TODO: disable in certain buffers (help, nerdtree?, quickfix ...)
+" Defaults
+let g:vim_current_word_enabled = 1
+let g:vim_current_word_match_id = 501
+let g:vim_current_word_twins_match_id = 502
 
-" Check if gihglight group exists
-func! HlExists(hl)
+function s:vim_current_word_toggle()
+  if g:vim_current_word_enabled == 1
+    call s:vim_current_word_disable()
+  else
+    call s:vim_current_word_enable()
+  endif
+endfunction
+
+function s:vim_current_word_enable()
+  let g:vim_current_word_enabled = 1
+endfunction
+
+function s:vim_current_word_disable()
+  if s:current_word_matches_exist()
+    call s:clear_current_word_matches()
+  endif
+  let g:vim_current_word_enabled = 0
+endfunction
+
+" Check if highlight group exists
+func! s:hl_exists(hl)
   if !hlexists(a:hl)
     return 0
   endif
@@ -12,32 +34,44 @@ func! HlExists(hl)
 endfunc
 
 " Set default twins color
-if !HlExists('CurrentWordTwins')
-  hi CurrentWordTwins ctermbg=53
+if !s:hl_exists('CurrentWordTwins')
+  hi CurrentWordTwins cterm=underline
 end
 
 " Set default word color
-if !HlExists('CurrentWord')
-  hi CurrentWord ctermbg=52
+if !s:hl_exists('CurrentWord')
+  hi CurrentWord ctermbg=237
 end
 
 function! s:highlight_word_under_cursor()
-  " if !exists('b:word_characters')
-  "   let b:word_characters = s:word_characters_regex()
-  " endif
+  if !g:vim_current_word_enabled | return 0 | endif
+  if s:current_word_matches_exist()
+    call s:clear_current_word_matches()
+  endif
   let character_under_cursor = matchstr(getline('.'), '\%' . col('.') . 'c.')
-  " if character_under_cursor=~#b:word_characters
   if character_under_cursor=~#'\k'
-    let current_word =expand('<cword>')
-    " exe '2match CurrentWordTwins /\V\<'.current_word.'\>/'
-    exe 'match CurrentWordTwins /\k*\<\V'.current_word.'\m\>\k*/'
-" /\k*\%#\k*
-    exe '2match CurrentWord /\k*\%#\k*/'
-    " exe '3match CurrentWord /\%[['.current_word.']]\+\%#\%[['.current_word.']]\+/'
-  else
-    match none
-    2match none
+    let current_word = expand('<cword>')
+    call matchadd('CurrentWordTwins', '\k*\<\V'.current_word.'\m\>\k*', -5, 502)
+    call matchadd('CurrentWord', '\k*\%#\k*', -4, 501)
   endif
 endfunction
 
+function! s:clear_current_word_matches()
+  call matchdelete(501)
+  call matchdelete(502)
+endfunction
+
+function! s:current_word_matches_exist()
+  let matches_list = getmatches()
+  for match in matches_list
+    if get(match, 'id', '-1') == 501 || get(match, 'id', '-1') == 502
+      return 1
+    end
+  endfor
+  return 0
+endfunction
+
 autocmd! CursorMoved * call s:highlight_word_under_cursor()
+autocmd InsertEnter * call s:vim_current_word_disable()
+autocmd InsertLeave * call s:vim_current_word_enable()
+command! VimCurrentWordToggle call s:vim_current_word_toggle()
