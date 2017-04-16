@@ -3,7 +3,7 @@ let g:vim_current_word_enabled = 1
 let g:vim_current_word_match_id = 501
 let g:vim_current_word_twins_match_id = 502
 
-function s:vim_current_word_toggle()
+function! s:vim_current_word_toggle()
   if g:vim_current_word_enabled == 1
     call s:vim_current_word_disable()
   else
@@ -11,11 +11,11 @@ function s:vim_current_word_toggle()
   endif
 endfunction
 
-function s:vim_current_word_enable()
+function! s:vim_current_word_enable()
   let g:vim_current_word_enabled = 1
 endfunction
 
-function s:vim_current_word_disable()
+function! s:vim_current_word_disable()
   if s:current_word_matches_exist()
     call s:clear_current_word_matches()
   endif
@@ -23,7 +23,7 @@ function s:vim_current_word_disable()
 endfunction
 
 " Check if highlight group exists
-func! s:hl_exists(hl)
+function! s:hl_exists(hl)
   if !hlexists(a:hl)
     return 0
   endif
@@ -71,7 +71,7 @@ function! s:current_word_matches_exist()
   return 0
 endfunction
 
-autocmd! CursorMoved * call s:highlight_word_under_cursor()
+autocmd CursorMoved * call s:highlight_word_under_cursor()
 autocmd InsertEnter * call s:vim_current_word_disable()
 autocmd InsertLeave * call s:vim_current_word_enable()
 command! VimCurrentWordToggle call s:vim_current_word_toggle()
