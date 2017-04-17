@@ -27,7 +27,7 @@ end
 
 " Set default word highlight
 if !s:hl_exists('CurrentWord')
-  hi CurrentWord ctermbg=237
+  hi link CurrentWord IncSearch
 end
 
 " Toggle plugin
