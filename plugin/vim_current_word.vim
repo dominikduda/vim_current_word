@@ -1,26 +1,13 @@
-" Defaults
-let g:vim_current_word_enabled = 1
-let g:vim_current_word_match_id = 501
-let g:vim_current_word_twins_match_id = 502
-
-function! s:vim_current_word_toggle()
-  if g:vim_current_word_enabled == 1
-    call s:vim_current_word_disable()
-  else
-    call s:vim_current_word_enable()
-  endif
-endfunction
-
-function! s:vim_current_word_enable()
-  let g:vim_current_word_enabled = 1
-endfunction
-
-function! s:vim_current_word_disable()
-  if s:current_word_matches_exist()
-    call s:clear_current_word_matches()
-  endif
-  let g:vim_current_word_enabled = 0
-endfunction
+" Get/set defaults
+let g:vim_current_word#enabled = get(g:, 'vim_current_word#enabled', 1)
+let g:vim_current_word#current_word_match_id = get(g:, 'vim_current_word#current_word_match_id', 501)
+let g:vim_current_word#twins_match_id = get(g:, 'vim_current_word#twins_match_id', 502)
+let g:vim_current_word#highlight_twins = get(g:, 'vim_current_word#highlight_twins', 1)
+let g:vim_current_word#highlight_current_word = get(g:, 'vim_current_word#highlight_current_word', 1)
+autocmd CursorMoved * call s:highlight_word_under_cursor()
+autocmd InsertEnter * call s:vim_current_word_disable()
+autocmd InsertLeave * call s:vim_current_word_enable()
+command! VimCurrentWordToggle call s:vim_current_word_toggle()
 
 " Check if highlight group exists
 function! s:hl_exists(hl)
@@ -33,45 +20,78 @@ function! s:hl_exists(hl)
   return (hlstatus !~ "cleared")
 endfunc
 
-" Set default twins color
+" Set default twins highlight
 if !s:hl_exists('CurrentWordTwins')
   hi CurrentWordTwins cterm=underline
 end
 
-" Set default word color
+" Set default word highlight
 if !s:hl_exists('CurrentWord')
   hi CurrentWord ctermbg=237
 end
 
+" Toggle plugin
+function! s:vim_current_word_toggle()
+  if g:vim_current_word#enabled == 1
+    call s:vim_current_word_disable()
+  else
+    call s:vim_current_word_enable()
+  endif
+endfunction
+
+" Enable plugin
+function! s:vim_current_word_enable()
+  let g:vim_current_word#enabled = 1
+endfunction
+
+" Disable plugin
+function! s:vim_current_word_disable()
+  call s:clear_current_word_matches()
+  let g:vim_current_word#enabled = 0
+endfunction
+
+" Higlight current word and twins (aka 'main')
 function! s:highlight_word_under_cursor()
-  if !g:vim_current_word_enabled | return 0 | endif
-  if s:current_word_matches_exist()
-    call s:clear_current_word_matches()
+  if !g:vim_current_word#enabled | return 0 | endif
+  call s:clear_current_word_matches()
+  if s:character_under_cursor()=~#'\k'
+    cal s:add_current_word_matches()
   endif
-  let character_under_cursor = matchstr(getline('.'), '\%' . col('.') . 'c.')
-  if character_under_cursor=~#'\k'
+endfunction
+
+" Get character under cursor
+function! s:character_under_cursor()
+  return matchstr(getline('.'), '\%' . col('.') . 'c.')
+endfunction
+
+" Add plugin matches
+function! s:add_current_word_matches()
+  if g:vim_current_word#highlight_twins
     let current_word = expand('<cword>')
-    call matchadd('CurrentWordTwins', '\k*\<\V'.current_word.'\m\>\k*', -5, 502)
-    call matchadd('CurrentWord', '\k*\%#\k*', -4, 501)
+    call matchadd('CurrentWordTwins', '\k*\<\V'.current_word.'\m\>\k*', -5, g:vim_current_word#twins_match_id)
+  endif
+  if g:vim_current_word#highlight_current_word
+    call matchadd('CurrentWord', '\k*\%#\k*', -4, g:vim_current_word#current_word_match_id)
   endif
 endfunction
 
+" Clear plugin matches
 function! s:clear_current_word_matches()
-  call matchdelete(501)
-  call matchdelete(502)
+  if s:current_word_match_exist(g:vim_current_word#current_word_match_id)
+    call matchdelete(g:vim_current_word#current_word_match_id)
+  endif
+  if s:current_word_match_exist(g:vim_current_word#twins_match_id)
+    call matchdelete(g:vim_current_word#twins_match_id)
+  endif
 endfunction
 
-function! s:current_word_matches_exist()
+" Check if plugin match exists
+function! s:current_word_match_exist(id)
   let matches_list = getmatches()
   for match in matches_list
-    if get(match, 'id', '-1') == 501 || get(match, 'id', '-1') == 502
+    if get(match, 'id', '-1') == a:id
       return 1
     end
   endfor
   return 0
 endfunction
-
-autocmd CursorMoved * call s:highlight_word_under_cursor()
-autocmd InsertEnter * call s:vim_current_word_disable()
-autocmd InsertLeave * call s:vim_current_word_enable()
-command! VimCurrentWordToggle call s:vim_current_word_toggle()
