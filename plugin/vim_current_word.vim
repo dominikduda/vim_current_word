@@ -22,12 +22,12 @@ endfunc
 
 " Set default twins highlight
 if !s:hl_exists('CurrentWordTwins')
-  hi CurrentWordTwins cterm=underline
+  hi CurrentWordTwins cterm=underline gui=underline
 end
 
 " Set default word highlight
 if !s:hl_exists('CurrentWord')
-  hi link CurrentWord IncSearch
+  hi link CurrentWord Search
 end
 
 " Toggle plugin
