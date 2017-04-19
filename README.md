@@ -1,8 +1,8 @@
 # vim_current_word
 Plugin highligting word under cursor and all of its occurrences.
 
-![default](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/default.gif)
 ![customized](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/customized.gif)
+![default](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/default.gif)
 
 Why should you use it?
   - Helps predict how vim word movements (`w`, `e`, `b`) will behave
@@ -36,7 +36,7 @@ Enable/disable highlighting twins of word under cursor:
 let g:vim_current_word#highlight_twins = 1
 ```
 
-Enable/disable highlighitng word under cursor:
+Enable/disable highlighting word under cursor:
 ```
 let g:vim_current_word#highlight_current_word = 1
 ```
@@ -64,7 +64,7 @@ Change highlight style of word under cursor:
 hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
 ```
 
-To achieve the style from second gif (in terminal vim):
+To achieve the style from the first gif (in terminal vim):
 ```
 hi CurrentWord ctermbg=53
 hi CurrentWordTwins ctermbg=237
