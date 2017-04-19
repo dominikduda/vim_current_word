@@ -48,7 +48,7 @@ Change highlight style of word under cursor:
 hi CurrentWord ctermbg=53
 ```
 
-#### Advanced customization:
+## Advanced customization:
 
 Change word under cursor twins match id (you should touch this only if you encounter some `match id already taken` error - theoretically may occur when some other plugin will override needed id)
 ```
