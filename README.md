@@ -10,7 +10,7 @@ Why should you use it?
   - Instant access to information where the variable under cursor is used
   - Works out of the box!
 
-Plugin determines what is a word based on what is a keyword in current file type. For example `foo#bar` in `.vim` file will be a single word (because vimscript allows to put `#` as part of variable name), but `.rb` file `foo#bar` will be considered as two words (because `#` starts comment).
+Plugin determines what is a word based on what is a keyword in current file type. For example `foo#bar` in `.vim` file will be a single word (because vimscript allows to put `#` as part of variable name), but in `.rb` file `foo#bar` will be considered as two words (because `#` starts comment).
 
 ## Installation
 via `Plug`, `Neobundle` or `Vundle`:
