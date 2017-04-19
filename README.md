@@ -82,6 +82,6 @@ let g:vim_current_word#current_word_match_id = 502
 
 ## Credits
 
-Thanks to [Bartosz Mąka](https://github.com/bartoszmaka) for creating the gifs.
+Thanks to [Bartosz Mąka](https://github.com/bartoszmaka) for creating the gifs and testing.
 
 Thanks to [Dávid Csákvári](https://github.com/dodie) for information about a script which was the inspiration for this plugin.
