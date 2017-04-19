@@ -79,3 +79,9 @@ Change word under cursor twins or word under cursor match id. You should touch t
 let g:vim_current_word#twins_match_id = 502
 let g:vim_current_word#current_word_match_id = 502
 ```
+
+## Credits
+
+Thanks to [Bartosz Mąka](https://github.com/bartoszmaka) for creating the gifs.
+
+Thanks to [Dávid Csákvári](https://github.com/dodie) for information about a script which was the inspiration for this plugin.
