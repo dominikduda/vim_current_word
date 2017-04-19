@@ -20,7 +20,7 @@ Plugin 'dominikduda/vim_current_word'
 
 ## Quick start
 
-By default vim_current_word will underline twins of word under cursor and use your `IncSearch` highlight group to color word under cursor. If you want to change this behavior see the styling section.
+By default vim_current_word will underline twins of word under cursor and use your `Search` highlight group to color word under cursor. If you want to change this behavior see the [styling](https://github.com/dominikduda/vim_current_word#styling) section.
 
 Plugin defines `:VimCurrentWordToggle` command which enables/disables plugin on the fly.
 
