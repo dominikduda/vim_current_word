@@ -2,7 +2,7 @@
 Plugin highligting word under cursor and all of its occurrences.
 
 Why should you use it?
-  - Helps predict how vim word movements (with `w`, `e`, `b`) will behave
+  - Helps predict how vim word movements (`w`, `e`, `b`) will behave
   - Instant access to information where the variable under cursor is used
 
 ## Installation with `Plug`:
