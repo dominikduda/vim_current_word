@@ -16,13 +16,13 @@ Plugin determines what is a word based on what is a keyword in current file type
 
 ## Installation
 via `Plug`, `Neobundle` or `Vundle`:
-```vim
+```
 Plug 'dominikduda/vim_current_word'
 NeoBundle 'dominikduda/vim_current_word'
 Plugin 'dominikduda/vim_current_word'
 ```
 via `Pathogen`:
-```vim
+```
 git clone https://github.com/dominikduda/vim_current_word.git ~/.vim/bundle/vim_current_word
 ```
 
