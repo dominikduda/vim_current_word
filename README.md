@@ -1,5 +1,5 @@
 # vim_current_word
-Plugin highligting word under cursor and all of its occurrences.
+Plugin highlighting word under cursor and all of its occurrences.
 
 ![customized](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/customized.gif)
 ![default](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/default.gif)
@@ -10,7 +10,7 @@ Plugin highligting word under cursor and all of its occurrences.
   - Instant access to information where the variable under cursor is used
   - Works out of the box!
 
-##### The most importantly it solves all the problems other similar plugins have with knowing what exacly is a word and when cursor is on the word.
+##### The most importantly it solves all the problems other similar plugins have with knowing what exactly is a word and when cursor is on the word.
 
 Plugin determines what is a word based on what is a keyword in current file type. For example `foo#bar` in `.vim` file will be a single word (because vimscript allows to put `#` as part of variable name), but in `.rb` file `foo#bar` will be considered as two words (because `#` starts comment).
 
@@ -35,7 +35,7 @@ Plugin defines `:VimCurrentWordToggle` command which enables/disables plugin on 
 ## Customization (values written here are defaults)
 
 ##### Enable/disable highlighting **only** in focused window:
-Setting this option to 0 will make the word highlight persist over window switches and even over focusing differen application window.
+Setting this option to 0 will make the word highlight persist over window switches and even over focusing different application window.
 ```vim
 let vim_current_word#highlight_only_in_focused_window = 1
 ```
