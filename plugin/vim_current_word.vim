@@ -4,9 +4,21 @@ let g:vim_current_word#current_word_match_id = get(g:, 'vim_current_word#current
 let g:vim_current_word#twins_match_id = get(g:, 'vim_current_word#twins_match_id', 502)
 let g:vim_current_word#highlight_twins = get(g:, 'vim_current_word#highlight_twins', 1)
 let g:vim_current_word#highlight_current_word = get(g:, 'vim_current_word#highlight_current_word', 1)
-autocmd CursorMoved * call s:highlight_word_under_cursor()
-autocmd InsertEnter * call s:vim_current_word_disable()
-autocmd InsertLeave * call s:vim_current_word_enable()
+let g:vim_current_word#highlight_only_in_focused_window = get(g:, 'vim_current_word#highlight_only_in_focused_window', 1)
+
+augroup vim_current_word
+  autocmd!
+  autocmd CursorMoved * call s:highlight_word_under_cursor()
+  autocmd InsertEnter * call s:vim_current_word_disable()
+  autocmd InsertLeave * call s:vim_current_word_enable()
+  if g:vim_current_word#highlight_only_in_focused_window
+    autocmd WinLeave * call s:clear_current_word_matches()
+    autocmd FocusLost * call s:vim_current_word_disable()
+    autocmd FocusGained * call s:vim_current_word_enable()
+    autocmd FocusGained * call s:highlight_word_under_cursor()
+  endif
+augroup END
+
 command! VimCurrentWordToggle call s:vim_current_word_toggle()
 
 " Check if highlight group exists
@@ -55,7 +67,7 @@ function! s:highlight_word_under_cursor()
   if !g:vim_current_word#enabled | return 0 | endif
   call s:clear_current_word_matches()
   if s:character_under_cursor()=~#'\k'
-    cal s:add_current_word_matches()
+    call s:add_current_word_matches()
   endif
 endfunction
 
