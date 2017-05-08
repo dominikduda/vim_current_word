@@ -34,10 +34,20 @@ Plugin defines `:VimCurrentWordToggle` command which enables/disables plugin on 
 
 ## Customization (values written here are defaults)
 
-##### Enable/disable highlighting **only** in focused window:
-Setting this option to 0 will make the word highlight persist over window switches and even over focusing different application window.
+#### Enable/disable highlighting of:
+
 ```vim
-let vim_current_word#highlight_only_in_focused_window = 1
+" Twins of word under cursor:
+let g:vim_current_word#highlight_twins = 1
+" The word under cursor:
+let g:vim_current_word#highlight_current_word = 1
+```
+
+##### Enable/disable highlighting only in focused window:
+
+Disabling this option will make the word highlight persist over window switches and even over focusing different application window.
+```vim
+let g:vim_current_word#highlight_only_in_focused_window = 1
 ```
 
 ##### Enable/disable plugin:
@@ -45,21 +55,11 @@ let vim_current_word#highlight_only_in_focused_window = 1
 let g:vim_current_word#enabled = 1
 ```
 
-##### Enable/disable highlighting twins of word under cursor:
-```vim
-let g:vim_current_word#highlight_twins = 1
-```
-
-##### Enable/disable highlighting word under cursor:
-```vim
-let g:vim_current_word#highlight_current_word = 1
-```
-
 ## Styling
 
-##### To change any style paste related code into your `.vimrc`
+#### To change any style paste related code into your `.vimrc`
 
-Change highlight style of word under cursor twins:
+Change highlight style of **twins of word under cursor**:
 ```vim
 hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
 "                          └┴┴┴┴┤        └┴┴┴┴┤     └┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤         └┴┤         └┴┤       └┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤
@@ -71,7 +71,7 @@ hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermf
 "                                                         ──────────────────────────────────────┘
 ```
 
-Change highlight style of word under cursor:
+Change highlight style of the **word under cursor**:
 ```vim
 hi CurrentWord guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
 "                     └┴┴┴┴┴──┐     └┴┴┴┴┤     └┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤         └┴┤         └┴┤       └┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┤
@@ -90,7 +90,7 @@ hi CurrentWordTwins ctermbg=237
 ```
 
 Rather important notes:
-- If you do not want any special styles use `gui=NONE cterm=NONE`
+- If you do not want any special styles just ommit them (or use `gui=NONE cterm=NONE`)
 - [Here](http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html) you can find color codes for console-vim
 
 ## Advanced:
