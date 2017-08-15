@@ -1,3 +1,5 @@
+[![donate_with_bitcoins](https://img.shields.io/badge/Bitcoin-Donate-ffc600.svg?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAABWVBMVEUAAAD1khf1jxf1kRb3kxf1khf3khf1kRf3khn3kRj3lRz3khj1kRj3kxj1kRj3kxj3liP1khj2kxj3kxv2khj3khn2khj2lyT2kxn4kxn5qUn2khn2mCf4oz72khn2khn2khn3khn3kxr3kxv3lBz3lB33lyP3lyT3mCX3min3mir3njP3nzX3oDX3oTj3oTr4oz34pUD4pUH4p0X4qUr4qkv4qk34sFj5slz5s175tGH5tWP5t2j5uGn5uWv5u3D5vXT6vXX6vnX6v3j6wX36wn%2F6w4H6xIL6xYX6yY37zZb7zZf7z5r70J370qH706P72a%2F82bD83bj837z84sL848T85cj85cr958z9583958796M796M%2F96dD96dL97dn97tz9793979798OD98uX%2B8%2Bb%2B9Oj%2B9er%2B9ez%2B9u3%2B9%2B7%2B%2BPD%2B%2B%2Fj%2B%2FPn%2B%2FPr%2B%2Ffv%2B%2Ffz%2B%2Fv7%2F%2Fv5cp9%2FiAAAAIHRSTlMANjc4a2xsbYSFhYaHwsTExMXX19jY2dnc3Nzd3d3z9P0zBPsAAAC8SURBVAjXBcHJbsIwFAXQaz%2BTBDKQMIiKKquKZf%2F%2FT7pBbBokUIUQJrExeXbccwQAylQV7OgmQABptXeHMNkf7aGQfqy%2FYn1LfJVfmKjJWLQFrd%2FSRKfmBYKl62l5qEdhJQGxSt3z0hcqztQCoFKuvuXm14hcSsQktyctIhtA2rja1%2Frv2PGuhFE827VZ9vlqkiGAKcDrhW%2B3DZ%2Bvj0GFPk%2F4LLtXuPshEoLjaZTd0%2BgbQwCgOZWx5%2FcE%2FAPW1Fv3gHREswAAAABJRU5ErkJggg%3D%3D)](https://blockchain.info/address/1DMdu2m8qX4svMdsnPjRevh2wvxCy2hy8n)
+
 ![logo_with_title](https://raw.githubusercontent.com/dominikduda/config_files/master/logo_with_title.png)
 
 # vim_current_word
@@ -108,3 +110,7 @@ let g:vim_current_word#current_word_match_id = 502
 Thanks to [Bartosz Mąka](https://github.com/bartoszmaka) for creating the gifs and testing.
 
 Thanks to [Dávid Csákvári](https://github.com/dodie) for information about a script which was the inspiration for this plugin.
+
+## Donations
+
+If you like the plugin, you can thank me by sending BTC to following address: **1DMdu2m8qX4svMdsnPjRevh2wvxCy2hy8n**
