@@ -79,7 +79,7 @@ endfunction
 " Add plugin matches
 function! s:add_current_word_matches()
   if g:vim_current_word#highlight_twins
-    call matchadd('CurrentWordTwins', '\%(\k*\%#\k*\)\@!\<\M'.expand('<cword>').'\m\>', -5, g:vim_current_word#twins_match_id)
+    call matchadd('CurrentWordTwins', '\%(\k*\%#\k*\)\@!\<\V'.substitute(expand('<cword>'), '\\', '\\\\', 'g').'\m\>', -5, g:vim_current_word#twins_match_id)
   endif
   if g:vim_current_word#highlight_current_word
     call matchadd('CurrentWord', '\k*\%#\k*', -4, g:vim_current_word#current_word_match_id)
