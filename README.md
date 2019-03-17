@@ -102,6 +102,11 @@ Rather important notes:
 - If you do not want any special styles just ommit them (or use `gui=NONE cterm=NONE`)
 - [Here](http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html) you can find color codes for console-vim
 
+## FAQ:
+
+##### Why do my customized highlight does not work?
+You have to set custom higlights below `colorscheme` in your `.vimrc`.
+
 ## Advanced:
 
 Change word under cursor twins or word under cursor match id. You should touch this only if you encounter some `match id already taken` error - theoretically may occur when some other plugin will override required id.
