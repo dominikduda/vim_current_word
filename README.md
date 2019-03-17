@@ -49,7 +49,7 @@ let g:vim_current_word#highlight_current_word = 1
 
 Enabling this option will make higlight appear after cursor is not moved for some time.
 ```vim
-let g:vim_current_word#highlight_only_in_focused_window = 0
+let g:vim_current_word#delay_highlight = 0
 ```
 
 ##### Enable/disable highlighting only in focused window:
