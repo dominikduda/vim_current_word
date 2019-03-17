@@ -55,6 +55,7 @@ function! s:vim_current_word_toggle()
     call s:vim_current_word_disable()
   else
     call s:vim_current_word_enable()
+    call s:highlight_word_under_cursor()
   endif
 endfunction
 
