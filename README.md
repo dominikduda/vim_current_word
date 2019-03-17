@@ -104,7 +104,7 @@ Rather important notes:
 
 ## FAQ:
 
-##### Why do my customized highlight does not work?
+##### Why doesn't my customized highlight work?
 You have to set custom higlights below `colorscheme` in your `.vimrc`.
 
 ## Advanced:
