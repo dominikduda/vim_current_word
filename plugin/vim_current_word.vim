@@ -7,6 +7,7 @@ let g:vim_current_word#highlight_current_word = get(g:, 'vim_current_word#highli
 let g:vim_current_word#highlight_only_in_focused_window = get(g:, 'vim_current_word#highlight_only_in_focused_window', 1)
 let g:vim_current_word#delay_highlight = get(g:, 'vim_current_word#delay_highlight', 0)
 let s:disabled_by_focus_lost = 0
+let s:disabled_by_insert_mode = 0
 
 augroup vim_current_word
   autocmd!
@@ -16,8 +17,8 @@ augroup vim_current_word
   else
     autocmd CursorMoved * call s:highlight_word_under_cursor()
   endif
-  autocmd InsertEnter * call s:vim_current_word_disable()
-  autocmd InsertLeave * call s:vim_current_word_enable()
+  autocmd InsertEnter * call s:handle_insert_enter()
+  autocmd InsertLeave * call s:handle_insert_leave()
   if g:vim_current_word#highlight_only_in_focused_window
     autocmd WinLeave * call s:clear_current_word_matches()
     autocmd FocusLost * call s:handle_focus_lost()
@@ -54,7 +55,23 @@ function! s:vim_current_word_toggle()
     call s:vim_current_word_disable()
   else
     call s:vim_current_word_enable()
+    call s:highlight_word_under_cursor()
   endif
+endfunction
+
+" Disable plugin until insert leave
+function! s:handle_insert_enter()
+  if !g:vim_current_word#enabled | return 0 | endif
+  let s:disabled_by_insert_mode = 1
+  call s:vim_current_word_disable()
+endfunction
+
+" Enable plugin after insert leave
+function! s:handle_insert_leave()
+  if !s:disabled_by_insert_mode | return 0 | endif
+  let s:disabled_by_insert_mode = 0
+  call s:vim_current_word_enable()
+  call s:highlight_word_under_cursor()
 endfunction
 
 " Disable plugin until next focus
@@ -127,5 +144,3 @@ function! s:current_word_match_exist(id)
   endfor
   return 0
 endfunction
-
-
