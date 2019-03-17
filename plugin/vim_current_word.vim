@@ -5,10 +5,16 @@ let g:vim_current_word#twins_match_id = get(g:, 'vim_current_word#twins_match_id
 let g:vim_current_word#highlight_twins = get(g:, 'vim_current_word#highlight_twins', 1)
 let g:vim_current_word#highlight_current_word = get(g:, 'vim_current_word#highlight_current_word', 1)
 let g:vim_current_word#highlight_only_in_focused_window = get(g:, 'vim_current_word#highlight_only_in_focused_window', 1)
+let g:vim_current_word#delay_highlight = get(g:, 'vim_current_word#highlight_after_delay', 0)
 
 augroup vim_current_word
   autocmd!
-  autocmd CursorMoved * call s:highlight_word_under_cursor()
+  if g:vim_current_word#highlight_after_delay
+    autocmd CursorHold * call s:highlight_word_under_cursor()
+    autocmd CursorMoved * call s:clear_current_word_matches()
+  else
+    autocmd CursorMoved * call s:highlight_word_under_cursor()
+  endif
   autocmd InsertEnter * call s:vim_current_word_disable()
   autocmd InsertLeave * call s:vim_current_word_enable()
   if g:vim_current_word#highlight_only_in_focused_window
