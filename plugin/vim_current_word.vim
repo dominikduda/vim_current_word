@@ -9,7 +9,7 @@ let g:vim_current_word#delay_highlight = get(g:, 'vim_current_word#highlight_aft
 
 augroup vim_current_word
   autocmd!
-  if g:vim_current_word#highlight_after_delay
+  if g:vim_current_word#delay_highlight
     autocmd CursorHold * call s:highlight_word_under_cursor()
     autocmd CursorMoved * call s:clear_current_word_matches()
   else
