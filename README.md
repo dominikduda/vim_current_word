@@ -59,6 +59,17 @@ Disabling this option will make the word highlight persist over window switches 
 let g:vim_current_word#highlight_only_in_focused_window = 1
 ```
 
+##### Blacklist buffers:
+
+To prevent the plugin from running in one or more buffers add following to your vimrc:
+```vim
+autocmd BufAdd NERD_tree_*,your_buffer_name.rb,*.js :let b:vim_current_word_disabled_in_this_buffer = 1
+```
+The example above disables the plugin in:
+- Every buffer which name start with `NERD_tree_`
+- Every buffer which name equals `your_buffer_name.rb`
+- Every buffer which name ends with `.js`
+
 ##### Enable/disable plugin:
 ```vim
 let g:vim_current_word#enabled = 1

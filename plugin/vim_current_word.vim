@@ -102,7 +102,8 @@ endfunction
 
 " Higlight current word and twins (aka 'main')
 function! s:highlight_word_under_cursor()
-  if !g:vim_current_word#enabled | return 0 | endif
+  let s:vim_current_word_disabled_in_this_buffer = get(b:, 'vim_current_word_disabled_in_this_buffer', 0)
+  if !g:vim_current_word#enabled || s:vim_current_word_disabled_in_this_buffer | return 0 | endif
   call s:clear_current_word_matches()
   if s:character_under_cursor()=~#'\k'
     call s:add_current_word_matches()
