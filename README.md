@@ -1,4 +1,4 @@
-![logo_with_title](https://raw.githubusercontent.com/dominikduda/config_files/master/logo_with_title.png)
+<img src="https://raw.githubusercontent.com/dominikduda/config_files/master/dd_logo_blue_bg.png" width="300" height="300" />
 
 # vim_current_word
 Plugin highlighting word under cursor and all of its occurrences.
