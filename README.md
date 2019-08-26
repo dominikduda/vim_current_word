@@ -47,9 +47,9 @@ let g:vim_current_word#highlight_current_word = 1
 
 ##### Delay highlighting:
 
-Enabling this option will make higlight appear after cursor is not moved for some time.
+Setting this option to more than 0 will enable delayed highlighting. The value of this variable is a delay in milliseconds.
 ```vim
-let g:vim_current_word#delay_highlight = 0
+let g:vim_current_word#highlight_delay = 0
 ```
 
 ##### Enable/disable highlighting only in focused window:
