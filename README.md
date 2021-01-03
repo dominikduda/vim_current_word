@@ -27,6 +27,10 @@ via `Pathogen`:
 ```
 git clone https://github.com/dominikduda/vim_current_word.git ~/.vim/bundle/vim_current_word
 ```
+via Vim 8 packages:
+```
+git clone https://github.com/dominikduda/vim_current_word.git ~/.vim/pack/plugins/start/vim_current_word
+```
 
 ## Quick start
 
