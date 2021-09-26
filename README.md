@@ -4,7 +4,6 @@
 Plugin highlighting word under cursor and all of its occurrences.
 
 ![customized](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/customized.gif)
-![default](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/default.gif)
 
 ##### Why should you use it?
   - Helps predict how vim word movements (`w`, `e`, `b`) will behave
