@@ -62,6 +62,14 @@ Disabling this option will make the word highlight persist over window switches 
 let g:vim_current_word#highlight_only_in_focused_window = 1
 ```
 
+##### Blacklist filetypes:
+
+To avoid specific filetypes, add this variable to your vimrc:
+```vim
+let g:vim_current_word#excluded_filetypes = []
+```
+If you only want to disable the plugin in some buffers, see the next configuration item.
+
 ##### Blacklist buffers:
 
 To prevent the plugin from running in one or more buffers add following to your vimrc:
