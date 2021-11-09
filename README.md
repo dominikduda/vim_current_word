@@ -66,7 +66,7 @@ let g:vim_current_word#highlight_only_in_focused_window = 1
 
 To avoid specific filetypes, add this variable to your vimrc:
 ```vim
-let g:vim_current_word#excluded_filetypes = []
+let g:vim_current_word#excluded_filetypes = ['ruby']
 ```
 If you only want to disable the plugin in some buffers, see the next configuration item.
 
