@@ -20,6 +20,11 @@ function! vim_current_word#pre_highlight()
   call vim_current_word#clear_current_word_matches()
   let l:vim_current_word_disabled_in_this_buffer = get(b:, 'vim_current_word_disabled_in_this_buffer', 0)
   if !g:vim_current_word#enabled || index(g:vim_current_word#excluded_filetypes, &filetype) >= 0 || l:vim_current_word_disabled_in_this_buffer | return 0 | endif
+  if len(g:vim_current_word#included_filetypes) > 0
+      if index(g:vim_current_word#included_filetypes, &filetype) == -1
+          return 0
+      end
+  end
   if g:vim_current_word#highlight_delay
     call vim_current_word#schedule_highlight()
   else
