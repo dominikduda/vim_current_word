@@ -1,6 +1,10 @@
-<img src="https://raw.githubusercontent.com/dominikduda/config_files/master/dd_logo_blue_bg.png" width="300" height="300" />
+<p float="left">
+  <img src="https://raw.githubusercontent.com/dominikduda/config_files/master/dd_logo_blue_bg.png" width="300" />
+  <img src="https://raw.githubusercontent.com/dominikduda/vim_current_word/master/vim_current_word_logo.png" width="500" />
+</p>
 
 # vim_current_word
+
 Plugin highlighting word under cursor and all of its occurrences.
 
 ![customized](https://raw.githubusercontent.com/dominikduda/vim_current_word/master/gifs/customized.gif)
