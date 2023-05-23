@@ -1,7 +1,4 @@
-<p float="left">
-  <img src="https://raw.githubusercontent.com/dominikduda/config_files/master/dd_logo_blue_bg.png" width="300" />
-  <img src="https://raw.githubusercontent.com/dominikduda/vim_current_word/master/vim_current_word_logo.png" width="500" />
-</p>
+<img src="https://raw.githubusercontent.com/dominikduda/vim_current_word/master/vim_current_word_logo.png" width="500" />
 
 # vim_current_word
 
@@ -146,3 +143,10 @@ let g:vim_current_word#current_word_match_id = 502
 Thanks to [Bartosz Mąka](https://github.com/bartoszmaka) for creating the gifs and testing.
 
 Thanks to [Dávid Csákvári](https://github.com/dodie) for information about a script which was the inspiration for this plugin.
+
+<br>
+<br>
+<p float="left">
+  <img src="https://raw.githubusercontent.com/dominikduda/config_files/master/dd_logo_blue_bg.png" width="300" />
+</p>
+<p>Plugin by Dominik Duda</p>
