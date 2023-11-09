@@ -7,6 +7,7 @@ let g:vim_current_word#highlight_current_word = get(g:, 'vim_current_word#highli
 let g:vim_current_word#highlight_only_in_focused_window = get(g:, 'vim_current_word#highlight_only_in_focused_window', 1)
 let g:vim_current_word#highlight_delay = get(g:, 'vim_current_word#highlight_delay', 0)
 let g:vim_current_word#excluded_filetypes = get(g:, 'vim_current_word#excluded_filetypes', [])
+let g:vim_current_word#included_filetypes = get(g:, 'vim_current_word#included_filetypes', [])
 
 augroup vim_current_word
   autocmd!
