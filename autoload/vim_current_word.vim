@@ -40,12 +40,12 @@ endfunc
 
 " Set default twins highlight
 if !vim_current_word#hl_exists('CurrentWordTwins')
-  hi CurrentWordTwins cterm=underline gui=underline
+  hi default link CurrentWordTwins Underlined
 end
 
 " Set default word highlight
 if !vim_current_word#hl_exists('CurrentWord')
-  hi link CurrentWord Search
+  hi default link CurrentWord Search
 end
 
 " Toggle plugin
